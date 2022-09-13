@@ -16,7 +16,13 @@ public class Item {
 		return 0;
 	}
 	
-	public int getChave() {
+	// Recupera chave
+	public int getChave() { 
 		return chave;
+	}
+
+	// Altera chave
+	public void setChave(int chave) { // novo metodo -> altera a chave
+		this.chave = chave;
 	}
 }
