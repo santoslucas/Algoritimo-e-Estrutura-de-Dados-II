@@ -3,7 +3,7 @@ package principal;
 public class xGrafo {
   public static class Aresta {
     private int v1, v2, peso;
-    public Aresta (int v1, int v2, int peso) {
+    public Aresta (int v1, int v2, int peso) { // classe aresta
       this.v1 = v1; this.v2 = v2; this.peso = peso;
     }
     public int peso () { return this.peso; }
@@ -11,14 +11,15 @@ public class xGrafo {
     public int v2 () { return this.v2; }
   }
 
-  private int mat[][]; // @{\it pesos do tipo inteiro}@
+  private int mat[][]; // @ matriz de adjacencia
   private int numVertices;
-  private int pos[]; // @{\it posi\c{c}\~ao atual ao se percorrer os adjs de um v\'ertice v}@
+  private int pos[]; // posicao atual ao se percorrer os adjs de um vertice
 
   public xGrafo (int numVertices) {
-    this.mat = new int[numVertices][numVertices];
+    this.mat = new int[numVertices][numVertices]; 
     this.pos = new int[numVertices]; 
     this.numVertices = numVertices; 
+    // Zera todos os pesos da matriz
     for (int i = 0; i < this.numVertices; i++) {
       for (int j = 0; j < this.numVertices; j++) this.mat[i][j] = 0;
       this.pos[i] = -1; 
@@ -29,6 +30,7 @@ public class xGrafo {
     this.mat = new int[numVertices][numVertices];
     this.pos = new int[numVertices]; 
     this.numVertices = numVertices; 
+    // Zera todos os pesos da matriz
     for (int i = 0; i < this.numVertices; i++) {
       for (int j = 0; j < this.numVertices; j++) this.mat[i][j] = 0;
       this.pos[i] = -1; 
@@ -36,28 +38,29 @@ public class xGrafo {
   }
 
   public void insereAresta (int v1, int v2, int peso) {
-    this.mat[v1][v2] = peso; 
+    this.mat[v1][v2] = peso; // define uma aresta como existente (peso>0), ou inexistente (peso=0)
   }
 
   public boolean existeAresta (int v1, int v2) {
-    return (this.mat[v1][v2] > 0);
+    return (this.mat[v1][v2] > 0); // peso > 0, aresta existe
   }
 
-  public boolean listaAdjVazia (int v) {
+  // verifica se a lista de adjacencia esta vazia
+  public boolean listaAdjVazia (int v) { 
     for (int i =0; i < this.numVertices; i++)
       if (this.mat[v][i] > 0) return false;
     return true;
   }
 
   public Aresta primeiroListaAdj (int v) {
-    // @{\it Retorna a primeira aresta que o v\'ertice v participa ou}@ 
-    // @{\it {\bf null} se a lista de adjac\^encia de v for vazia}@
+    // Retorna a primeira aresta que o vertice v participa ou
+    // null se a lista de adjacencia de v for vazia
     this.pos[v] = -1; return this.proxAdj (v);
   }
 
   public Aresta proxAdj (int v) {
-    // @{\it Retorna a pr\'oxima aresta que o v\'ertice v participa ou}@ 
-    // @{\it {\bf null} se a lista de adjac\^encia de v estiver no fim}@ 
+    // Retorna a proxima aresta que o vertice v participa ou 
+    // null se a lista de adjacencia de v estiver no fim 
     this.pos[v] ++;
     while ((this.pos[v] < this.numVertices) && 
            (this.mat[v][this.pos[v]] == 0)) this.pos[v]++;
@@ -66,13 +69,15 @@ public class xGrafo {
   }
 
   public Aresta retiraAresta (int v1, int v2) {
-    if (this.mat[v1][v2] == 0) return null; // @{\it Aresta n\~ao existe}@
+    if (this.mat[v1][v2] == 0) return null; // aresta ja nao existe
     else {
-      Aresta aresta = new Aresta (v1, v2, this.mat[v1][v2]);
-      this.mat[v1][v2] = 0; return aresta;
+      Aresta aresta = new Aresta (v1, v2, this.mat[v1][v2]); //cria aresta apagada para retorna-la
+      this.mat[v1][v2] = 0; //apaga aresta
+      return aresta; //retorna aresta apagada
     }
   }
 
+  // imprime a matriz de adjacencia
   public void imprime () {
     System.out.print ("   ");
     for (int i = 0; i < this.numVertices; i++) 
@@ -88,6 +93,7 @@ public class xGrafo {
   
   public int numVertices () { return this.numVertices; }
 
+  // NAO NECESSARIO, gera um grafo transposto
   public xGrafo grafoTransposto () {
     xGrafo grafoT = new xGrafo (this.numVertices); 
     for (int v = 0; v < this.numVertices; v++)

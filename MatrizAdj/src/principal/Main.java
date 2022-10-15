@@ -43,8 +43,8 @@ public class Main {
         System.out.println();
 
         xCiclo grafo1_Ciclo = new xCiclo(grafo1);
-        if(grafo1_Ciclo.possuiCiclos())
-            System.out.println("O grafo 1 possui ciclos.\n");
+        if(grafo1_Ciclo.possuiCiclos()) // Verifica a existencia de arestas de retorno, ou seja, ciclos
+            System.out.println("O grafo 1 possui ciclos.\n"+"Ele possui: "+grafo1_Ciclo.numArestasRetorno+" arestas de retorno.\n");
         else
             System.out.println("O grafo 1 NÃO possui ciclos.\n");
 
@@ -77,8 +77,8 @@ public class Main {
         grafo2.imprime();
         System.out.println();
 
-        xCiclo grafo2_Ciclo = new xCiclo(grafo2);
-        if(grafo2_Ciclo.possuiCiclos())
+        xCiclo grafo2_Ciclo = new xCiclo(grafo2); 
+        if(grafo2_Ciclo.possuiCiclos()) // Verifica a existencia de arestas de retorno, ou seja, ciclos
             System.out.println("O grafo 2 possui ciclos.");
         else
             System.out.println("O grafo 2 NÃO possui ciclos.");
