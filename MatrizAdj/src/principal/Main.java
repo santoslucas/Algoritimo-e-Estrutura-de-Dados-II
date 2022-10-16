@@ -4,7 +4,7 @@ public class Main {
     public static void main (String[] args){
 
         //--------------------------------- EXEMPLO 1 ------------------------------------
-        xGrafo grafo1 = new xGrafo(8);
+        XGrafo grafo1 = new XGrafo(8);
 
         grafo1.insereAresta(0, 1, 1);
         grafo1.insereAresta(0, 3, 1);
@@ -42,14 +42,14 @@ public class Main {
         grafo1.imprime();
         System.out.println();
 
-        xCiclo grafo1_Ciclo = new xCiclo(grafo1);
+        XCiclo grafo1_Ciclo = new XCiclo(grafo1);
         if(grafo1_Ciclo.possuiCiclos()) // Verifica a existencia de arestas de retorno, ou seja, ciclos
             System.out.println("O grafo 1 possui ciclos.\n"+"Ele possui: "+grafo1_Ciclo.numArestasRetorno+" arestas de retorno.\n");
         else
             System.out.println("O grafo 1 NÃO possui ciclos.\n");
 
         //--------------------------------- EXEMPLO 2 ------------------------------------
-        xGrafo grafo2 = new xGrafo(10);
+        XGrafo grafo2 = new XGrafo(10);
 
         grafo2.insereAresta(0, 1, 1);
         grafo2.insereAresta(0, 2, 1);
@@ -77,7 +77,7 @@ public class Main {
         grafo2.imprime();
         System.out.println();
 
-        xCiclo grafo2_Ciclo = new xCiclo(grafo2); 
+        XCiclo grafo2_Ciclo = new XCiclo(grafo2); 
         if(grafo2_Ciclo.possuiCiclos()) // Verifica a existencia de arestas de retorno, ou seja, ciclos
             System.out.println("O grafo 2 possui ciclos.");
         else

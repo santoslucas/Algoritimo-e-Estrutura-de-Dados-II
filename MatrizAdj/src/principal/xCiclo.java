@@ -1,14 +1,14 @@
 package principal;
 
-public class xCiclo {
+public class XCiclo {
   public static final byte branco = 0;
   public static final byte cinza  = 1;
   public static final byte preto  = 2;
   public int numArestasRetorno = 0;
   private int d[], t[], antecessor[];
-  private xGrafo grafo;
+  private XGrafo grafo;
 
-  public xCiclo (xGrafo grafo) {
+  public XCiclo (XGrafo grafo) {
     this.grafo = grafo; int n = this.grafo.numVertices();
     d = new int[n]; t = new int[n]; //tempo de visita e termino de cada vertice
     antecessor = new int[n];
@@ -18,7 +18,7 @@ public class xCiclo {
     cor[u] = cinza; this.d[u] = ++tempo; //aresta vira cinza, tempo de visita
 
     if (!this.grafo.listaAdjVazia (u)) { //se a lista de adj nao esta vazia
-      xGrafo.Aresta a = this.grafo.primeiroListaAdj (u); //pega a primeira adjacencia
+      XGrafo.Aresta a = this.grafo.primeiroListaAdj (u); //pega a primeira adjacencia
       while (a != null) { //percorre rodas adjacencias
         int v = a.v2 ();
         if (cor[v] == branco) { //vertice nao percorrido

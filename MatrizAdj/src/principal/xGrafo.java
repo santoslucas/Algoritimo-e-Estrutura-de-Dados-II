@@ -1,6 +1,6 @@
 package principal;
 
-public class xGrafo {
+public class XGrafo {
   public static class Aresta {
     private int v1, v2, peso;
     public Aresta (int v1, int v2, int peso) { // classe aresta
@@ -15,7 +15,7 @@ public class xGrafo {
   private int numVertices;
   private int pos[]; // posicao atual ao se percorrer os adjs de um vertice
 
-  public xGrafo (int numVertices) {
+  public XGrafo (int numVertices) {
     this.mat = new int[numVertices][numVertices]; 
     this.pos = new int[numVertices]; 
     this.numVertices = numVertices; 
@@ -26,7 +26,7 @@ public class xGrafo {
     }
   }
 
-  public xGrafo (int numVertices, int numArestas) {
+  public XGrafo (int numVertices, int numArestas) {
     this.mat = new int[numVertices][numVertices];
     this.pos = new int[numVertices]; 
     this.numVertices = numVertices; 
@@ -94,8 +94,8 @@ public class xGrafo {
   public int numVertices () { return this.numVertices; }
 
   // NAO NECESSARIO, gera um grafo transposto
-  public xGrafo grafoTransposto () {
-    xGrafo grafoT = new xGrafo (this.numVertices); 
+  public XGrafo grafoTransposto () {
+    XGrafo grafoT = new XGrafo (this.numVertices); 
     for (int v = 0; v < this.numVertices; v++)
       if (!this.listaAdjVazia (v)) {
         Aresta adj = this.primeiroListaAdj (v);
